@@ -1,0 +1,8 @@
+padding: establece el espacio de relleno 
+requerido por todos los lados de un elemento.
+
+flex: Los elementos flexibles pueden ser 
+estirados para utilizar el espacio disponible 
+proporcional a su factor de crecimiento 
+flexible o su factor de contracción 
+flexible para evitar desbordamiento.

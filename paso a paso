@@ -1,0 +1,196 @@
+1 escribo el html. con ! y tab abro el estandar. cambio el titulo. busco
+los estilos de letra en google que quiero usar y lo agrego al head
+
+2 hago un div contenedor donde ira la calculadora, hago otro div
+que se llame calculadora que contendra otro div llamado display donde 
+se mostraran los numeros actuales debajo y los anteriores arriba
+
+3 agrego 18 botones donde iran los numeros y los operadores. para saber
+el orden lo veo en la maqueta que hice en papel
+
+4 agrego clases a los numeros para identificarlos luego. el .
+cuenta como numero porq sera parte de un valor. a los botones
+que ocupen dos espacios en la calculadora le doy una clase que se llame
+col-2. a los operadores le doy la clase de operador
+
+5 creo un un css. index.css. agrego al html el link
+al css.
+
+6 en css elijo un selector comun a todo el documento *
+y agrego una letra franceus y serif. tmb el color
+blanco con "color"
+
+6 en body le quito el margen con "margin 0" y
+le doy color al fondo de la pantalla con backround-color
+
+7 con display flex justify-conter center para centrar
+align-items para que quede en el medio de la pag.
+height: 100vh quiere decir el total
+de la view
+
+8 doy clases a calculadora. con display: grid armo
+las grillas para cada valor. con grid-template-columns: repeat(4, 75px)
+hago que se creen cuatro columnas y que cada columna
+se va a repetir hacia abajo y cada columna tendra
+un tamano de 75 px. grid-template-rows: 160px repeat(5, 75px)
+para hacer un rows (filas) para el display y para los numeros
+160px sera el alto del diplay y repeat para el resto de las
+raws, 5. que tendran 75px. pinto la calcu con
+backraund color verde. uso un padding: 15px para que los botones no queden
+tan pegado a los bordes.
+para los bordes tmb uso border-radius: 32px para
+darle un rendondeado y box-shadow para darle un
+sombreado, 15px, 10px, 0px, 5px. el primer 
+valor mueve sobre el eje de x. si pongo 15px lo 
+ubica hacia la derecha, el segundo sobre y, 10px
+havia abajo, el tercero la dureza de la sobra y el 
+cuarto que tan grande es la sombra. despues agrego
+el color negro #00000033. 33 es la opacidad. no usar comas para
+separar las medidas.
+
+9 voy a los botones. tomo todos con button, sin punto. doy dos
+tipos de sombras. uno para la sombra los botones 
+(5px 5px 10px -3px #00000040) de un lado y otro para la sombra del 
+otro lado
+con "," separo los argumentos.
+con button:active activo el que el boton cambie de color cuando el
+usuario clikea.
+con button:focus outline: non le saco la linea al boton
+
+10 .display{
+     grid-column: 1/-1; indica el ancho total de una punta a la otra
+     
+     padding: 16px; 
+     
+     display: flex;
+     
+     margin: 10px 10px 20px; para que debajo tenga
+     un poco mas de margen.
+     
+     flex-direction: column; para que los 
+     numeros se pongan uno encima del otro
+     
+     align-items: flex-end; para tirar todo a la
+     derecha.
+     
+     background-color: #363636; para dar un color
+     mas oscuro a todo el display
+
+     border-radius: 32px;
+
+     text-align:right; por si se va a 
+     mas de una linea
+
+    justify-content: space-between; para que se 
+    separen los valores
+
+    word-break: break-all; por si se va a dos
+    lineas
+ }
+
+ 11 voy a la clase colum-2 para agrandar los 
+ botones c y 0
+ .col-2{
+     grid-column: span 2;
+lo que hace es aumentar por dos el tamano del
+boton
+
+12 por ultimo camvio el tamano de los numeros
+en el display con el id que especifique.
+
+13 creo un archivo JS. voy a seleccionear
+todos los nodos que hay en html para anadir
+interactividad a la pag. 
+
+14 hago una variable para cada elemento que voy a usar en js 
+(ver conceptos js)
+
+const displayValorAnterior= document.getElementById ("valor-anterior");
+const displayValorActual= document.getElementById ("valor-actaul");
+const botonesNumeros = document.querySelectorAll (".numero");
+const botonesOperadores = document.querySelectorAll (".operador");
+
+uso los id y las clases de html
+
+15 tengo que crear otro archivo js que haga las operaciones. 
+se inicia con mayuscula porque va a ser una clase
+
+16 la calculadora (class Calculadora) tendra quehacer 
+cuatro cosas: sumar, restar, multiplicar, y 
+dividir. Para cada cosa hay qur agregar metodos.
+
+17 tengo que importar en el html todos los metodos de js.
+en el head agrego <script src="Calculadora.js" type="text/javascript">
+</script>. debajo agrego el index.js y le agreego defer paraque 
+se cargue luego de que se haya cargado toda la pag. 
+<script src="index.js" type="text/javascript" defer>.
+
+crear instancia con la variable const calculadora = new Calculadora
+
+18 creo otro js que se llame Display.js. lo que va a hacer es mostrar en la calculadora
+los botones que toco. controla la calculadora e interactua con ella
+
+19 declaro la class Display. va a tener un constructor para que 
+cuando voy a pasarle valores para instanciar la clase. necesita
+el displayValorActual y displayValorAnterior para ir actualizandolos
+
+20 tengo que hacer la iteracion a traves de una funcion. A cada botonse le agregar
+un addEventListener. con for each
+
+21 botonesNumeros.forEach(boton => {
+    boton.addEventListener ("click",() => display.agregarNumero(boton.innerHTML));
+    })
+
+Le digo al diplay q cada vez q se presioone un click segundoagregue un
+numero. el boton de html.
+
+22 agrego un metodo que imprima los valores en la pantalla
+     imprimirValores(){
+          this.displayValorActual.textContent = this.valorActual;
+          this.displayValorAnterior.textContent = this.valorAnterior;
+
+          el texto de html lo agrego al valorActual y anterior
+
+23 para que se concatenen uno detras del otro y no se reemplacen
+tengo que poner
+     this.valorActual = this.valorActual + numero
+
+24 para que el punto no se repita agrego un if
+
+     if(numero==="." && this.valorActual.includes (".")) return
+     this.valorActual = this.valorActual.toString() + numero.toString();
+     this.imprimirValores();
+
+     toString es para decir que por momentos seran nnumeros y por momentos
+     strings
+
+25 para borrar caracter por caracter agrego otro metodo a partir 
+de la funcion imprimirValores. valorActual = a valorActual pero 
+lo recorto en su ultima posicion (slice (0, -1)). y agrego la funcion al boton de borrar
+con onclik
+
+26 bonton borrar todo. seteo v actual y anterior a un string vacio.
+agreo a Diplay un tipoOperacion = undefined que va a guardar el tipo de operaciones
+q este usando el usuario.
+lo agrego al html con onclick
+<button class = "col-2" onclick="display.borrarTodo()">C</button>
+
+27 agrego otro metodo para calcular. toma los valores del display y se 
+los da a la calculadora para que haga el calculo. uso parseFloat
+para que deje de ser un string y vuelva a ser un numero.
+
+28 pregunto si v actual y v anterior no son numeros (Nan). con la funcion
+isNan. si cualquiera de los dos son Nan retorno sin hacer nada.si tiene valores
+tengo que hacer que valor actual sea igual a this.calculadora con 
+el tipo de opracion que creo el usuario.
+
+29 agrego lo que necesito en los botones. en el index
+selecciono todos los operador botonesOperadores. uso otra funcion (computar)
+para recibir el valor del tipo de operacion que quiera hacer (value).
+agrego los valores que ya estan en Calculadora
+
+
+
+
+
+

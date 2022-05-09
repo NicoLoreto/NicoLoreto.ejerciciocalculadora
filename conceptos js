@@ -1,0 +1,21 @@
+getElementById: metodo que permite, como su 
+nombre indica, seleccionar un elemento del
+documento por medio del valor del atributo id 
+que se le haya asignado.
+
+querySelectorAll: método devuelve todos los elementos del documento 
+que coincide con un CSS especificado selector (s), como un objeto
+NodeList estática. El objeto NodeList representa una colección de 
+nodos. Los nodos pueden ser accedidos por números de índice.
+
+new: es una palabra clave en Javascript (y otros) para crear una nueva instancia de un objeto
+
+parseInt: quita los decimales y deja solo el numero entero
+let numero = "8.87";
+let resultado = parseInt(numero);
+console.log (resultado);
+8
+
+parseFloat: quita los caracterres que no sean numeros
+
+
