@@ -59,7 +59,7 @@ class Display {
     }
 
     mostrarAlerta (){
-        alert ("AHAHHHHHHHHHHHHHHHH");
+        alert ("botón de alerta");
     }
     
 }
